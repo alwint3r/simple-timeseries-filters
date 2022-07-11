@@ -1,0 +1,21 @@
+{
+  "name": "simple-timeseries-filters",
+  "version": "0.1.0",
+  "description": "Collection of simple filters for time-series data",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  },
+  "keywords": [],
+  "author": "Alwin Arrasyid <alwin.ridd@mail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.43",
+    "typescript": "^4.7.4"
+  }
+}
