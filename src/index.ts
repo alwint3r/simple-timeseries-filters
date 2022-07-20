@@ -1,2 +1,2 @@
-export { SimpleKalmanFilter } from "./simple-kalman-filter";
-export { MovingAverage } from "./moving-average";
+export { SimpleKalmanFilter } from "./filters/simple-kalman-filter";
+export { MovingAverage } from "./filters/moving-average";
