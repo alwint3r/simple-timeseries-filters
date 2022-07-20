@@ -20,13 +20,6 @@ describe("Moving Average", () => {
     const ma2 = new MovingAverage(10);
     expect(() => ma2.fromJson(serialized)).not.toThrow();
 
-    const parsedMa2 = JSON.parse(ma2.toJson());
-
-    expect(parsedMa2.data.length).toBe(10);
-    expect(parsedMa2.data).toStrictEqual(new Array(10).fill(20));
-    expect(parsedMa2.initialized).toBe(true);
-    expect(parsedMa2.p).toBe(0);
-    expect(parsedMa2.sum).toBe(200);
-    expect(parsedMa2.numOfSamples).toBe(10);
+    expect(ma2).toStrictEqual(ma);
   });
 });
