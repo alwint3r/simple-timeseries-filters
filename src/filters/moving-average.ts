@@ -1,6 +1,7 @@
+import { IJsonSerializable } from "../interfaces/json-serializable.interface";
 import { ITimeSeriesFilter } from "./filter.interface";
 
-export class MovingAverage implements ITimeSeriesFilter {
+export class MovingAverage implements ITimeSeriesFilter, IJsonSerializable {
   private data: number[] = [];
   private initialized: boolean = false;
   private p: number = 0;
@@ -12,6 +13,10 @@ export class MovingAverage implements ITimeSeriesFilter {
     if (typeof defaultValue === "number") {
       this.initialize(defaultValue);
     }
+  }
+
+  toJson(): string {
+    return JSON.stringify(this);
   }
 
   private initialize(value: number) {

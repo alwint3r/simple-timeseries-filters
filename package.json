@@ -8,8 +8,8 @@
     "/dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w"
+    "build": "rm -rf dist/ && tsc",
+    "build:watch": "rm -rf dist/ && tsc -w"
   },
   "keywords": [],
   "author": "Alwin Arrasyid <alwin.ridd@mail.com>",

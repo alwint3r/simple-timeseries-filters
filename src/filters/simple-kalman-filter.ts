@@ -1,6 +1,7 @@
+import { IJsonSerializable } from "../interfaces/json-serializable.interface";
 import { ITimeSeriesFilter } from "./filter.interface";
 
-export class SimpleKalmanFilter implements ITimeSeriesFilter {
+export class SimpleKalmanFilter implements ITimeSeriesFilter, IJsonSerializable {
   private predictedEstimate: number;
   private predictedUncertainty: number;
   private gain: number;
@@ -14,6 +15,10 @@ export class SimpleKalmanFilter implements ITimeSeriesFilter {
     this.predictedEstimate = estimate;
     this.predictedUncertainty = estimateUncertainty;
     this.gain = 0;
+  }
+
+  toJson(): string {
+    return JSON.stringify(this);
   }
 
   update(measurement: number): number {
