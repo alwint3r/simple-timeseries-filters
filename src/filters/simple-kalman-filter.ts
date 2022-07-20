@@ -1,6 +1,7 @@
 import { InvalidValueError } from "../errors/invalid-value.error";
 import { IJsonDeserializable } from "../interfaces/json-deserializable.interface";
 import { IJsonSerializable } from "../interfaces/json-serializable.interface";
+import { isNumber } from "../validators/is-number.validator";
 import { ITimeSeriesFilter } from "./filter.interface";
 
 export class SimpleKalmanFilter
@@ -24,24 +25,13 @@ export class SimpleKalmanFilter
   fromJson(json: string): void {
     try {
       const parsed = JSON.parse(json);
-      const isPredictedEstimateValid =
-        typeof parsed.predictedEstimate === "number" &&
-        !isNaN(parsed.predictedEstimate);
-      const isPredictedUncertaintyValid =
-        typeof parsed.predictedUncertainty === "number" &&
-        !isNaN(parsed.predictedUncertainty);
-      const isEstimateValid =
-        typeof parsed.estimate === "number" && !isNaN(parsed.estimate);
-      const isGainValid =
-        typeof parsed.gain === "number" && !isNaN(parsed.gain);
-      const isEstimateUncertaintyValid =
-        typeof parsed.estimateUncertainty === "number" &&
-        !isNaN(parsed.estimateUncertainty);
-      const isProcessNoiseValid =
-        typeof parsed.processNoise === "number" && !isNaN(parsed.processNoise);
-      const isMeasurementNoiseValid =
-        typeof parsed.measurementNoise === "number" &&
-        !isNaN(parsed.measurementNoise);
+      const isPredictedEstimateValid = isNumber(parsed.predictedEstimate);
+      const isPredictedUncertaintyValid = isNumber(parsed.predictedUncertainty);
+      const isEstimateValid = isNumber(parsed.estimate);
+      const isGainValid = isNumber(parsed.gain);
+      const isEstimateUncertaintyValid = isNumber(parsed.estimateUncertainty);
+      const isProcessNoiseValid = isNumber(parsed.processNoise);
+      const isMeasurementNoiseValid = isNumber(parsed.measurementNoise);
 
       if (
         isPredictedEstimateValid &&

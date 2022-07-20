@@ -1,6 +1,7 @@
 import { InvalidValueError } from "../errors/invalid-value.error";
 import { IJsonDeserializable } from "../interfaces/json-deserializable.interface";
 import { IJsonSerializable } from "../interfaces/json-serializable.interface";
+import { isNumber } from "../validators/is-number.validator";
 import { ITimeSeriesFilter } from "./filter.interface";
 
 export class MovingAverage
@@ -25,13 +26,10 @@ export class MovingAverage
 
       const isDataValid = Array.isArray(parsed.data);
       const isInitializedValid = typeof parsed.initialized === "boolean";
-      const isPValid = typeof parsed.p === "number" && !isNaN(parsed.p);
-      const isSumValid =
-        typeof parsed.sum === "number" && !isNaN(parsed.sum) && parsed.sum >= 0;
+      const isPValid = isNumber(parsed.p);
+      const isSumValid = isNumber(parsed.sum) && parsed.sum >= 0;
       const isNumOfSamplesValid =
-        typeof parsed.numOfSamples === "number" &&
-        !isNaN(parsed.numOfSamples) &&
-        parsed.numOfSamples > 0;
+        isNumber(parsed.numOfSamples) && parsed.numOfSamples > 0;
 
       if (
         isDataValid &&
