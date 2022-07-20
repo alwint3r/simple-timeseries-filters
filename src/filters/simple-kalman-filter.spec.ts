@@ -13,4 +13,14 @@ describe('Simple Kalman Filter', () => {
     expect(parsed.processNoise).toBe(0.0625);
     expect(parsed.measurementNoise).toBe(1.4);
   });
+
+  it('Should be deserializable from json', () => {
+    const kf = new SimpleKalmanFilter(0, 1000, 0.0625, 1.4);
+    const serialized = kf.toJson();
+
+    const kf2 = new SimpleKalmanFilter(0, 1000, 0.1, 0.1);
+    expect(() => kf2.fromJson(serialized)).not.toThrow();
+
+    expect(kf2).toStrictEqual(kf);
+  });
 });
