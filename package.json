@@ -1,6 +1,6 @@
 {
   "name": "simple-timeseries-filters",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Collection of simple filters for time-series data",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
